@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from '../../enviroment';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent {
   password: string = '';
   errorMessage: string = '';
 
-  private apiUrl = process.env['API_URL'];
+  private apiUrl = environment.apiUrl;
 
   constructor(private authService: UserService, private router: Router, private http: HttpClient) { }
 
