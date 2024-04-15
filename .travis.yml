@@ -3,14 +3,23 @@ node_js:
   - "18"
 
 cache:
+  npm: true
   directories:
     - node_modules
 
+addons:
+  chrome: stable
+
+before_install:
+  - npm config set progress false
+
 install:
-  - npm install
+  - npm ci --verbose
 
 script:
   - npm run test -- --watch=false --browsers=ChromeHeadlessNoSandbox
 
-addons:
-  chrome: stable
+notifications:
+  email:
+    on_success: never
+    on_failure: always
