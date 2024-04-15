@@ -1,0 +1,67 @@
+<div class="container">
+
+  <div class="login form">
+    <header>Signup</header>
+    <form [formGroup]="registrationForm">
+
+      <div class="form-group">
+        <div *ngIf="registrationForm.get('userName')?.invalid && registrationForm.get('userName')?.touched">
+          <div *ngIf="registrationForm.get('userName')?.hasError('required')">Имя обязательно</div>
+          <div *ngIf="registrationForm.get('userName')?.hasError('minlength')">Имя должно содержать не менее 3 символов
+          </div>
+        </div>
+        <input type="text" id="userName" formControlName="userName" placeholder="Enter Your Name"
+          [(ngModel)]="signupObj.userName" required>
+      </div>
+
+      <div class="form-group">
+        <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched">
+          <div *ngIf="registrationForm.get('email')?.hasError('required')">Электронная почта обязательна</div>
+          <div *ngIf="registrationForm.get('email')?.hasError('email')">Введите валидный адрес электронной почты</div>
+        </div>
+        <input type="email" id="email" formControlName="email" placeholder="Enter Your Email"
+          [(ngModel)]="signupObj.email" required>
+      </div>
+
+      <div class="form-group">
+        <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched">
+          <div *ngIf="registrationForm.get('password')?.hasError('required')">Пароль обязателен</div>
+          <div *ngIf="registrationForm.get('password')?.hasError('minlength')">Пароль должен содержать не менее 6
+            символов</div>
+        </div>
+        <input type="password" id="password" formControlName="password" placeholder="Enter Your password"
+          [(ngModel)]="signupObj.password" required>
+      </div>
+
+      <div class="form-group">
+        <div *ngIf="registrationForm.get('age')?.invalid && registrationForm.get('age')?.touched">
+          <div *ngIf="registrationForm.get('age')?.hasError('required')">Электронная почта обязательна</div>
+          <div *ngIf="registrationForm.get('age')?.hasError('age')">Введите валидный адрес электронной почты</div>
+        </div>
+        <input type="number" id="age" formControlName="age" placeholder="Enter Your Age" [(ngModel)]="signupObj.age"
+          required>
+      </div>
+
+      <!-- <div class="form-group">
+        <label for="dateOfBirth">Дата рождения</label>
+        <input type="date" id="dateOfBirth" formControlName="dateOfBirth" [(ngModel)]="signupObj.dateOfBirth">
+        <div *ngIf="registrationForm.get('dateOfBirth')?.invalid && (registrationForm.get('dateOfBirth')?.dirty || registrationForm.get('dateOfBirth')?.touched)">
+          <div *ngIf="registrationForm.get('dateOfBirth')?.hasError('required')">Дата рождения обязательна</div>
+          <div *ngIf="registrationForm.get('dateOfBirth')?.hasError('invalidDate')">Неверный формат даты</div>
+        </div>
+      </div> -->
+
+      <!-- <div class="form-group">
+        <label for="gender">Пол</label>
+        <br>
+        <select id="gender" formControlName="gender" [(ngModel)]="signupObj.gender">
+          <option value="male">Мужской</option>
+          <option value="female">Женский</option>
+        </select>
+      </div> -->
+
+      <input type="submit" class="button" value="Sign Up" (click)="onSignUp()" [disabled]="!registrationForm.valid">
+    </form>
+  </div>
+
+</div>
