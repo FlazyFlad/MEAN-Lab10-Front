@@ -21,7 +21,7 @@ export class LoginComponent {
   constructor(private authService: UserService, private router: Router, private http: HttpClient) { }
 
   login(email: string, password: string) {
-    this.http.post<any>(`${this.apiUrl}/users/login`, { email, password })
+    this.http.post<any>(`${this.apiUrl}/login`, { email, password })
       .pipe(
         catchError((error: HttpErrorResponse) => {
           this.errorMessage = error.error.message;
